@@ -33,7 +33,7 @@ serverless offline start
 ```
 
 ```sh
-curl -X POST -H "Content-Type: application/json" -d '[{"name": "device", "strVal": "iPhone", "metadata": "not interesting"}, {"name": "isAuthorized", "boolVal": "false", "lastSeen": "not interesting"}]' -H "Authorization: Bearer <JWT-tocken>" http://localhost:3000/dev/norm; echo
+curl -X POST -H "Content-Type: application/json" -d '[{"name": "device", "strVal": "iPhone", "metadata": "not interesting"}, {"name": "isAuthorized", "boolVal": "false", "lastSeen": "not interesting"}]' http://localhost:3000/dev/norm; echo
 # => {"device": "iPhone", "isAuthorized": "false"}
 ```
 
