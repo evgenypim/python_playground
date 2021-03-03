@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+import json as json_mod
 from sanic import Sanic
 from sanic.response import json
 from sanic_jwt import exceptions
@@ -54,6 +55,18 @@ def norm(_jsn):
 @protected()
 async def ep_norm(request):
     return json(norm(request.json))
+
+
+
+def for_serverless(event, context):
+    req_body = json_mod.loads(event['body'])
+
+    response = {
+        "statusCode": 200,
+        "body": json_mod.dumps(norm(req_body))
+    }
+
+    return response
 
 
 if __name__ == "__main__":

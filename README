@@ -19,8 +19,31 @@ python3 ./API/API.py
 ```sh
 curl -X POST -H "Content-Type: application/json" -d '{"username": "user1", "password": "pass1"}'  http://localhost:8000/auth; echo
 # => {"access_token":"<JWT-tocken>"}
-curl -X POST -H "Content-Type: application/json" -d '[{"name": "device", "strVal"
-: "iPhone", "metadata": "not interesting"}, {"name": "isAuthorized", "boolVal": "false", "lastSeen": "not interesting"}]' -
-H "Authorization: Bearer <JWT-tocken>" http://localhost:8000/norm; echo
-{"device":"iPhone","isAuthorized":"false"}
+curl -X POST -H "Content-Type: application/json" -d '[{"name": "device", "strVal": "iPhone", "metadata": "not interesting"}, {"name": "isAuthorized", "boolVal": "false", "lastSeen": "not interesting"}]' -H "Authorization: Bearer <JWT-tocken>" http://localhost:8000/norm; echo
+# =>{"device":"iPhone","isAuthorized":"false"}
 ```
+
+## serverless
+```sh
+serverless plugin install --name serverless-offline
+serverless plugin install --name serverless-offline-python
+serverless plugin install --name serverless-python-requirements
+serverless offline start
+```
+
+```sh
+curl -X POST -H "Content-Type: application/json" -d '[{"name": "device", "strVal": "iPhone", "metadata": "not interesting"}, {"name": "isAuthorized", "boolVal": "false", "lastSeen": "not interesting"}]' -H "Authorization: Bearer <JWT-tocken>" http://localhost:3000/dev/norm; echo
+# => {"device": "iPhone", "isAuthorized": "false"}
+```
+
+## troublrshooting
+
+serverless:
+TypeError: Os.tmpDir is not a function
+https://github.com/alhazmy13/serverless-offline-python/issues/18
+
+Offline requires Serverless v1.x.x but found 2.28.6. Exiting.
+```sh
+npm install serverless@>=1.60.0
+```
+
