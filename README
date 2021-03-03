@@ -1,0 +1,26 @@
+## python packages
+```sh
+pip3 install -r requirements.txt
+```
+
+## MagicList
+```sh
+python3 ../MagicList/MagicList.py
+```
+## API
+
+## run server
+```sh
+python3 ./API/API.py
+```
+
+
+## auth and query
+```sh
+curl -X POST -H "Content-Type: application/json" -d '{"username": "user1", "password": "pass1"}'  http://localhost:8000/auth; echo
+# => {"access_token":"<JWT-tocken>"}
+curl -X POST -H "Content-Type: application/json" -d '[{"name": "device", "strVal"
+: "iPhone", "metadata": "not interesting"}, {"name": "isAuthorized", "boolVal": "false", "lastSeen": "not interesting"}]' -
+H "Authorization: Bearer <JWT-tocken>" http://localhost:8000/norm; echo
+{"device":"iPhone","isAuthorized":"false"}
+```
