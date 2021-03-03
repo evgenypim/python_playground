@@ -25,6 +25,7 @@ curl -X POST -H "Content-Type: application/json" -d '[{"name": "device", "strVal
 
 ## serverless
 ```sh
+cd ./API
 serverless plugin install --name serverless-offline
 serverless plugin install --name serverless-offline-python
 serverless plugin install --name serverless-python-requirements
